@@ -4,8 +4,9 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const app = express();
 
+const app = express();
+app.use(express.static('public', { extensions: ['html', 'htm', 'css'] }));
 // Set up middleware
 app.use(session({
     secret: 'your-secret-key',
