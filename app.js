@@ -7,6 +7,8 @@ const path = require('path');
 
 const app = express();
 app.use(express.static('public', { extensions: ['html', 'htm', 'css'] }));
+app.use(express.static('public'));
+
 // Set up middleware
 app.use(session({
     secret: 'your-secret-key',
