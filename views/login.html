@@ -98,6 +98,10 @@
 <body>
     <form action="/login" method="post">
         <h2>Login</h2>
+
+        <!-- Display error modal if present -->
+        <p class="error-message">{{error}}</p>
+
         <label for="user">Username:</label>
         <input type="text" id="user" name="user" required>
 
@@ -106,9 +110,7 @@
 
         <button type="submit">Login</button>
 
-        <p class="error-message"><!-- Display error messages here --></p>
-
-        <button type="button" class="retry-button" onclick="retryLogin()">Retry</button>
+        
     </form>
 
     <script>
