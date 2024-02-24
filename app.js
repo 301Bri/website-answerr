@@ -7,7 +7,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const app = express();
 
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 // Use sessions to track login status
