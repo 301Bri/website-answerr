@@ -3,7 +3,7 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const path = require('path');
 const app = express();
 
