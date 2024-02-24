@@ -74,17 +74,9 @@ app.get('/logout', (req, res) => {
 
 // Home route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+    res.sendFile(path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf'));
 });
-app.get('/download', (req, res) => {
-    if (req.session.loggedin) {
-        // You can customize this part to serve your file
-        const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf');
-        res.download(file);
-    } else {
-        res.redirect('/');
-    }
-});
+
 
 // Start the server
 const port = process.env.PORT || 3000;
