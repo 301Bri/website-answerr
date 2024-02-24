@@ -59,7 +59,7 @@ app.post('/login', (req, res) => {
 
 // Download route
 app.get('/download', requireLogin, (req, res) => {
-    res.sendFile(path.join(__dirname, 'ans', 'download.html'));
+    res.sendFile(path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf'));
 });
 
 // Logout route
