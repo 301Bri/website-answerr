@@ -52,7 +52,7 @@ app.get('/logout', (req, res) => {
 app.get('/download', (req, res) => {
     if (req.session.loggedin) {
         // You can customize this part to serve your file
-        const file = path.join(__dirname, 'files', 'example.txt');
+        const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf');
         res.download(file);
     } else {
         res.redirect('/');
