@@ -18,17 +18,12 @@
         }
 
         form {
-            max-width: 80%;
-            width: 300px;
+            max-width: 400px;
+            width: 100%;
             padding: 20px;
             background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        form:hover {
-            transform: scale(1.05);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
@@ -80,6 +75,24 @@
             margin-top: 15px;
             text-align: center;
         }
+
+        .retry-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .retry-button:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 <body>
@@ -94,6 +107,15 @@
         <button type="submit">Login</button>
 
         <p class="error-message"><!-- Display error messages here --></p>
+
+        <button type="button" class="retry-button" onclick="retryLogin()">Retry</button>
     </form>
+
+    <script>
+        function retryLogin() {
+            // Redirect to the login page to retry
+            window.location.href = '/';
+        }
+    </script>
 </body>
 </html>
