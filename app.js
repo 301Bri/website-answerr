@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
 // Use sessions to track login status
 app.use(session({
     secret: 'your-secret-key',
