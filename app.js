@@ -1,66 +1,79 @@
 // app.js
+
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
-
-
 const app = express();
-app.use(express.static('public', { extensions: ['html', 'htm', 'css'] }));
-app.use(express.static('public'));
 
-// Set up middleware
+// Use sessions to track login status
 app.use(session({
     secret: 'your-secret-key',
     resave: true,
     saveUninitialized: true
 }));
+
+// Parse incoming requests
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Set up a simple user for demonstration
-const username = 'user';
-const password = 'Welcome1';
+// Serve static files from the public folder
+app.use(express.static('public'));
 
-// Define routes
-app.get('/', (req, res) => {
-    if (req.session.loggedin) {
-        res.sendFile(path.join(__dirname, 'views', 'download.html'));
-    } else {
-        res.sendFile(path.join(__dirname, 'views', 'login.html'));
-    }
-});
+// Array of user objects with usernames and passwords
+const users = [
+    { username: 'user1', password: 'pass1' },
+    { username: 'user2', password: 'pass2' },
+    // Add more users as needed
+];
 
-app.post('/login', (req, res) => {
-    const { user, pass } = req.body;
-    if (user === username && pass === password) {
-        req.session.loggedin = true;
+// Middleware to check login status
+const requireLogin = (req, res, next) => {
+    if (!req.session.loggedin) {
         res.redirect('/');
     } else {
-        res.send('Invalid username or password!');
+        next();
+    }
+};
+
+// Login route
+app.post('/login', (req, res) => {
+    const { user, pass } = req.body;
+
+    // Check if the provided username and password match any user
+    const validUser = users.find(u => u.username === user && u.password === pass);
+
+    if (validUser) {
+        req.session.loggedin = true;
+        req.session.username = user;
+        res.redirect('/download');
+    } else {
+        res.send('Invalid login');
     }
 });
 
+// Download route
+app.get('/download', requireLogin, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'download.html'));
+});
+
+// Logout route
 app.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
+    req.session.destroy(err => {
         if (err) {
-            console.error(err);
+            return res.redirect('/');
         }
         res.redirect('/');
     });
 });
 
-app.get('/download', (req, res) => {
-    if (req.session.loggedin) {
-        // You can customize this part to serve your file
-        const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf');
-        res.download(file);
-    } else {
-        res.redirect('/');
-    }
+// Home route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 
 // Start the server
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
