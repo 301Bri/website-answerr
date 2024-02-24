@@ -22,8 +22,9 @@ app.use(express.static('public'));
 
 // Array of user objects with usernames and passwords
 const users = [
-    { username: 'user1', password: 'pass1' },
-    { username: 'user2', password: 'pass2' },
+    { username: 'user', password: 'Welcome1' },
+    { username: 'ari', password: 'ariisstupid' },
+    { username: 'justin', password: 'justinisstupid' },
     // Add more users as needed
 ];
 
