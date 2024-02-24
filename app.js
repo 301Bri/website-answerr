@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up a simple user for demonstration
 const username = 'user';
-const password = 'password';
+const password = 'Welcome1';
 
 // Define routes
 app.get('/', (req, res) => {
