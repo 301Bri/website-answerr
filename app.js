@@ -49,7 +49,7 @@ app.post('/login', (req, res) => {
         req.session.username = user;
         res.redirect('/download');
     } else {
-        res.send('Invalid login');
+        res.redirect('/?error=Invalid username or password');
     }
 });
 
