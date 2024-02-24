@@ -37,6 +37,11 @@
             margin-bottom: 20px;
         }
 
+        .file-name {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
         .download-link, .logout-link {
             display: inline-block;
             width: calc(100% - 20px); /* Adjusted width to account for padding */
@@ -60,6 +65,7 @@
 <body>
     <div class="container">
         <h1>Welcome to the Download Page</h1>
+        <p class="file-name">File Name: example.txt</p>
         <a href="/download" class="download-link">Download File</a>
         <a href="/logout" class="logout-link">Logout</a>
     </div>
