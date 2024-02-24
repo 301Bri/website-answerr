@@ -79,7 +79,7 @@ app.get('/', (req, res) => {
 app.get('/pdf', (req, res) => {
     if (req.session.loggedin) {
         // You can customize this part to serve your file
-        const file = path.join(__dirname, 'files', 'example.txt');
+        const file = path.join(__dirname, 'ans', 'example.txt');
         res.download(file);
     } else {
         res.redirect('/');
