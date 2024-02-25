@@ -21,7 +21,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-
+//cookie
+app.use(cookieParser());
 // Parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
