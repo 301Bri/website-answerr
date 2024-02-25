@@ -38,7 +38,7 @@ const users = [
 
 // Middleware to check login status
 const requireLogin = (req, res, next) => {
-    if (!req.session.loggedin) {
+    if (!req.session.loggedin || req.cookies.loggedin) {
         res.redirect('/');
     } else {
         next();
@@ -55,6 +55,9 @@ app.post('/login', (req, res) => {
     if (validUser) {
         req.session.loggedin = true;
         req.session.username = user;
+       //cookie
+        res.cookie('loggedin', true, { maxAge: 30 * 24 * 60 * 60 * 1000 });
+
         res.redirect('/download');
     } else {
         
