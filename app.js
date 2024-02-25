@@ -6,9 +6,12 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const app = express();
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 
-app.engine('handlebars', exphbs.engine());
-app.set('view engine', 'handlebars');
+
+
 
 // Use sessions to track login status
 app.use(session({
