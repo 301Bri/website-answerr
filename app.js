@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const ejs = require('ejs'); 
 const app = express();
