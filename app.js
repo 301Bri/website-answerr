@@ -56,7 +56,8 @@ app.post('/login', (req, res) => {
         req.session.username = user;
         res.redirect('/download');
     } else {
-        res.render('login', { error: 'Invalid username or password' });
+        alert('Wrong password or username')
+        res.redirect('/')
     }
 });
 
