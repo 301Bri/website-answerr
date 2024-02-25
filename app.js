@@ -5,6 +5,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const ejs = require('ejs'); 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
