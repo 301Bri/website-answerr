@@ -22,10 +22,11 @@ app.use(session({
     saveUninitialized: true
 }));
 //cookie
-app.use(cookieParser());
+
 // Parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Serve static files from the public folder
 app.use(express.static('public'));
