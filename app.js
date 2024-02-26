@@ -39,13 +39,13 @@ const users = [
     // Add more users as needed
 ];
 
-// Middleware to check login status
 const requireLogin = (req, res, next) => {
     if (req.session.loggedin || (req.cookies && req.cookies.loggedin)) {
         next(); // User is logged in, proceed to the next middleware or route handler
     } else {
         res.redirect('/');
-    };
+    }
+};
 
 // Login route
 app.post('/login', (req, res) => {
