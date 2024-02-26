@@ -54,15 +54,14 @@ app.post('/login', (req, res) => {
     // Check if the provided username and password match any user
     const validUser = users.find(u => u.username === user && u.password === pass);
 
-    if (validUser) {
+       if (validUser) {
         req.session.loggedin = true;
         req.session.username = user;
-       //cookie
+        //cookie
         res.cookie('loggedin', true, { maxAge: 30 * 24 * 60 * 60 * 1000 });
 
         res.redirect('/download');
     } else {
-        
         res.redirect('/');
     }
 });
