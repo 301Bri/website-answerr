@@ -45,6 +45,7 @@ const requireLogin = (req, res, next) => {
         next(); // User is logged in, proceed to the next middleware or route handler
     } else {
         res.redirect('/');
+    };
 
 // Login route
 app.post('/login', (req, res) => {
