@@ -91,7 +91,8 @@ app.get('/pdf', (req, res) => {
         const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf');
         res.download(file);
     } else {
-        res.redirect('/');
+               const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf');
+        res.download(file);
     }
 });
 
