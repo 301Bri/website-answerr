@@ -89,6 +89,10 @@ app.get('/pdf', (req, res) => {
 const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf');
         res.download(file);
 });
+app.get('/math', (req, res) => {
+const file = path.join(__dirname, 'ans', 'Math_A_ans.pdf');
+        res.download(file);
+});
 
 // Start the server
 const port = process.env.PORT || 3000;
