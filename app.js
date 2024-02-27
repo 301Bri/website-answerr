@@ -86,7 +86,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 app.get('/pdf', (req, res) => {
-const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L01聲音鐘(112f632256).pdf');
+const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L02孩子的鐘塔(112f632260).pdf');
         res.download(file);
 });
 app.get('/math', (req, res) => {
