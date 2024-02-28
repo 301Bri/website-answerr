@@ -35,7 +35,7 @@ app.use(express.static('public'));
 const users = [
     { username: 'user', password: 'Welcome1' },
     { username: 'ari', password: 'ariisstupid' },
-    { username: 'justin', password: 'justinisstupid' },
+    { username: 'justin', password: 'justinisprettierthanari' },
     { username: 'ari2', password: 'ari對葉心動' },
     
     // Add more users as needed
