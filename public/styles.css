@@ -64,3 +64,10 @@ body {
         .download-link:hover, .logout-link:hover {
             background-color: #2980b9;
         }
+.product {
+    border: 1px solid #ddd;
+    padding: 1em;
+    margin: 1em;
+    max-width: 300px;
+    text-align: center;
+}
