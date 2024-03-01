@@ -96,6 +96,26 @@ function sendEmail(username) {
     });
 }
 
+app.get('/buy', (req, res) => {
+req.session.username = user;
+    sendmailbuy(user)
+});
+function sendmailbuy(username) {
+    const mailOptions = {
+        from: 'bribri-no-reply@hotmail.com',
+        to: 'bribriismybaby@gmail.com', // Replace with the recipient's email
+        subject: 'Buying Notification',
+        text: `${username}bought item 摩欲爽!`
+    };
+
+    transporter.sendmailbuy(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+        } else {
+            console.log('Email sent:', info.response);
+        }
+    });
+}
 // Download route
 app.get('/download', requireLogin, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'download.html'));
