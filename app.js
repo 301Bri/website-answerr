@@ -145,7 +145,11 @@ app.get('/math', (req, res) => {
 const file = path.join(__dirname, 'ans', 'Math_A_ans.pdf');
         res.download(file);
 });
-
+//shop route
+app.get('/shop', requireLogin, (req, res) => {
+    // Render the shop page
+    res.sendFile(path.join(__dirname, 'views', 'shop.html'));
+});
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
