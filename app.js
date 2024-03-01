@@ -54,6 +54,7 @@ const transporter = nodemailer.createTransport({
     host: 'smtp-mail.outlook.com',
     port: 587,
     secure: false,
+     requireTLS: true,
     auth: {
         user: 'bribri-no-reply@hotmail.com',
         pass: 'Welcomehello1'
