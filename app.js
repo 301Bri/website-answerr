@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const ejs = require('ejs'); 
+const nodemailer = require('nodemailer');
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
