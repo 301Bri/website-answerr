@@ -60,3 +60,22 @@ main button {
 main button:hover {
     background-color: #bd2130;
 }
+
+        .buy_link, .logout-link {
+            display: inline-block;
+            width: calc(100% - 20px); /* Adjusted width to account for padding */
+            padding: 15px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .buy-link:hover, .logout-link:hover {
+            background-color: #2980b9;
+        }
