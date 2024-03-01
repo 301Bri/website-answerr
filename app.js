@@ -49,7 +49,16 @@ const requireLogin = (req, res, next) => {
         res.redirect('/');
     }
 };
-
+//email thingeeee config
+const transporter = nodemailer.createTransport({
+    host: 'smtp-mail.outlook.com',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'bribri-no-reply@hotmail.com',
+        pass: 'Welcomehello1'
+    }
+});
 // Login route
 app.post('/login', (req, res) => {
     const { user, pass } = req.body;
@@ -62,12 +71,29 @@ app.post('/login', (req, res) => {
         req.session.username = user;
         //cookie
         res.cookie('loggedin', true, { maxAge: 30 * 24 * 60 * 60 * 1000 });
-
+         sendEmail(user);
         res.redirect('/download');
     } else {
         res.redirect('/');
     }
 });
+//email
+function sendEmail(username) {
+    const mailOptions = {
+        from: 'your-email@gmail.com',
+        to: 'bribriismybaby@gmail.com', // Replace with the recipient's email
+        subject: 'Login Notification',
+        text: `Hello, ${username} has logged in!`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+        } else {
+            console.log('Email sent:', info.response);
+        }
+    });
+}
 
 // Download route
 app.get('/download', requireLogin, (req, res) => {
