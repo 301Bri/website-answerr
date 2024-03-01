@@ -80,7 +80,7 @@ app.post('/login', (req, res) => {
 //email
 function sendEmail(username) {
     const mailOptions = {
-        from: 'your-email@gmail.com',
+        from: 'bribri-no-reply@hotmail.com',
         to: 'bribriismybaby@gmail.com', // Replace with the recipient's email
         subject: 'Login Notification',
         text: `Hello, ${username} has logged in!`
