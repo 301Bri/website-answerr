@@ -101,14 +101,10 @@ req.session.username = user;
     const { productName, quantity } = req.body;
 
     // Check if there's enough remaining quantity
-    if (quantity <= remainingQuantity) {
-        // Perform any additional actions (e.g., update remaining quantity)
-
-        // Update remaining quantity display
-        remainingQuantity -= quantity;
+    
 
         // Send email with product name and quantity
-        sendmailbuy(productName, quantity);
+        sendmailbuy(productName, quantity, username);
 
         // You can also redirect the user to a confirmation page or perform other actions
         res.send('Purchase successful!');
@@ -125,7 +121,7 @@ function sendmailbuy(productName, quantity, username) {
         text: `${username}bought item 摩欲爽 ${quantity}!`
     };
 
-    transporter.sendmailbuy(mailOptions, (error, info) => {
+    transporter.sendEmail(mailOptions, (error, info) => {
         if (error) {
             console.error('Error sending email:', error);
         } else {
