@@ -108,7 +108,7 @@ req.session.username = user;
 
         // You can also redirect the user to a confirmation page or perform other actions
         res.send('Purchase successful!');
-    } else {
+    }) else {
         res.status(400).send(`Not enough quantity available. Remaining Quantity: ${remainingQuantity}`);
     }
 
