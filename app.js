@@ -96,37 +96,7 @@ function sendEmail(username) {
     });
 }
 
-app.get('/buy', (req, res) => {
 
-    const { productName, quantity } = req.body;
-
-    // Check if there's enough remaining quantity
-    
-
-        // Send email with product name and quantity
-        sendmailbuy(productName, quantity);
-
-        // You can also redirect the user to a confirmation page or perform other actions
-        res.send('Purchase successful!');
-    });
-
-
-function sendmailbuy(productName, quantity) {
-    const mailOptions = {
-        from: 'bribri-no-reply@hotmail.com',
-        to: 'bribriismybaby@gmail.com', // Replace with the recipient's email
-        subject: 'Buying Notification',
-        text: `${username}bought item 摩欲爽 ${quantity}!`
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-        } else {
-            console.log('Email sent:', info.response);
-        }
-    });
-}
 // Download route
 app.get('/download', requireLogin, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'download.html'));
