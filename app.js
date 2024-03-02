@@ -96,7 +96,7 @@ function sendEmail(username) {
     });
 }
 
-app.post('/buy', (req, res) => {
+app.get('/buy', (req, res) => {
 req.session.username = user;
     const { productName, quantity } = req.body;
 
