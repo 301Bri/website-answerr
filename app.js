@@ -72,29 +72,23 @@ app.post('/login', (req, res) => {
         req.session.username = user;
         //cookie
         res.cookie('loggedin', true, { maxAge: 30 * 24 * 60 * 60 * 1000 });
-         sendEmail(user);
+         sendEmail(user, 'Login Notification', `Hello, ${user} has logged in!`);
         res.redirect('/download');
     } else {
         res.redirect('/');
     }
 });
 //email
-function sendEmail(username) {
-    const mailOptions = {
-        from: 'bribri-no-reply@hotmail.com',
-        to: 'bribriismybaby@gmail.com', // Replace with the recipient's email
-        subject: 'Login Notification',
-        text: `Hello, ${username} has logged in!`
-    };
+app.get('/buy', requireLogin, (req, res) => {
+    // Implement your purchase logic here
+    const productName = '爽爽'; // Replace with the actual product name
+    const quantity = 1; // Replace with the actual quantity
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-        } else {
-            console.log('Email sent:', info.response);
-        }
-    });
-}
+    // Call the sendEmail function for purchase notification
+    sendEmail(req.session.username, 'Purchase Notification', `Thank you for purchasing ${quantity} ${productName}(s)!`);
+
+    res.send('Purchase successful! Email sent.');
+});
 
 
 // Download route
