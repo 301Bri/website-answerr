@@ -96,16 +96,33 @@ function sendEmail(username) {
     });
 }
 
-app.get('/buy', (req, res) => {
+app.post('/buy', (req, res) => {
 req.session.username = user;
-    sendmailbuy(user)
+    const { productName, quantity } = req.body;
+
+    // Check if there's enough remaining quantity
+    if (quantity <= remainingQuantity) {
+        // Perform any additional actions (e.g., update remaining quantity)
+
+        // Update remaining quantity display
+        remainingQuantity -= quantity;
+
+        // Send email with product name and quantity
+        sendmailbuy(productName, quantity);
+
+        // You can also redirect the user to a confirmation page or perform other actions
+        res.send('Purchase successful!');
+    } else {
+        res.status(400).send(`Not enough quantity available. Remaining Quantity: ${remainingQuantity}`);
+    }
 });
-function sendmailbuy(username) {
+});
+function sendmailbuy(productName, quantity, username) {
     const mailOptions = {
         from: 'bribri-no-reply@hotmail.com',
         to: 'bribriismybaby@gmail.com', // Replace with the recipient's email
         subject: 'Buying Notification',
-        text: `${username}bought item 摩欲爽!`
+        text: `${username}bought item 摩欲爽 ${quantity}!`
     };
 
     transporter.sendmailbuy(mailOptions, (error, info) => {
