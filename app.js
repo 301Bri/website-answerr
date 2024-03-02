@@ -93,7 +93,7 @@ app.get('/buy', requireLogin, (req, res) => {
 function sendEmail(to, subject, text) {
     const mailOptions = {
         from: 'bribri-no-reply@hotmail.com',
-        to: bribriismybaby,
+        to: 'bribriismybaby@gmail.com',
         subject: subject,
         text: text
     };
