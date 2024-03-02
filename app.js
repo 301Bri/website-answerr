@@ -116,7 +116,7 @@ req.session.username = user;
         res.status(400).send(`Not enough quantity available. Remaining Quantity: ${remainingQuantity}`);
     }
 });
-});
+
 function sendmailbuy(productName, quantity, username) {
     const mailOptions = {
         from: 'bribri-no-reply@hotmail.com',
