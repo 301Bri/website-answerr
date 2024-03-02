@@ -119,7 +119,7 @@ function sendmailbuy(productName, quantity) {
         text: `${username}bought item 摩欲爽 ${quantity}!`
     };
 
-    transporter.sendEmail(mailOptions, (error, info) => {
+    transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.error('Error sending email:', error);
         } else {
