@@ -89,6 +89,23 @@ app.get('/buy', requireLogin, (req, res) => {
 
     res.send('Purchase successful! Email sent.');
 });
+//sentemali
+function sendEmail(to, subject, text) {
+    const mailOptions = {
+        from: 'bribri-no-reply@hotmail.com',
+        to: bribriismybaby,
+        subject: subject,
+        text: text
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+        } else {
+            console.log('Email sent:', info.response);
+        }
+    });
+}
 
 
 // Download route
@@ -126,22 +143,7 @@ app.get('/shop', requireLogin, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'shop.html'));
 });
 //emaill toott
-function sendEmail(to, subject, text) {
-    const mailOptions = {
-        from: 'bribri-no-reply@hotmail.com',
-        to: 'bribriismybaby@gmail.com',
-        subject: subject,
-        text: text
-    };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-        } else {
-            console.log('Email sent:', info.response);
-        }
-    });
-}
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
