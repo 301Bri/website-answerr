@@ -97,7 +97,7 @@ function sendEmail(username) {
 }
 
 app.get('/buy', (req, res) => {
-req.session.username = user;
+
     const { productName, quantity } = req.body;
 
     // Check if there's enough remaining quantity
