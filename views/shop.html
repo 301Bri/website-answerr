@@ -37,6 +37,34 @@
         function goToDownloadPage() {
             window.location.href = '/download';
         }
+    
+    // Set the initial remaining quantity
+    let remainingQuantity = 1; // Set your actual remaining quantity here
+
+    function buyProduct(productName, quantity) {
+        // Check if there's enough remaining quantity
+        if (quantity <= remainingQuantity) {
+            // Perform any additional actions (e.g., update remaining quantity)
+
+            // Update remaining quantity display
+            remainingQuantity -= quantity;
+            document.getElementById('remainingQuantity1').textContent = `Remaining Quantity: ${remainingQuantity}`;
+
+            // Send email with product name and quantity
+            sendEmail(productName, quantity);
+
+            // You can also redirect the user to a confirmation page or perform other actions
+        } else {
+            alert(`Not enough quantity available. Remaining Quantity: ${remainingQuantity}`);
+        }
+    }
+
+    function sendEmail(productName, quantity) {
+        // Replace the email sending logic with your actual implementation
+        // Here, we are using a simple alert as a placeholder
+        alert(`Email sent for purchasing ${quantity} ${productName}(s)`);
+    }
+
 </script>
     </main>
 </body>
