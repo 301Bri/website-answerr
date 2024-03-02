@@ -145,7 +145,7 @@
             document.getElementById('remainingQuantity1').textContent = `Remaining Quantity: ${remainingQuantity}`;
 
             // Send email with product name and quantity
-            sendmailbuy(productName, quantity);
+            sendmailbuy(productName, quantity, username);
             window.location.href = '/buy';
 
             // You can also redirect the user to a confirmation page or perform other actions
