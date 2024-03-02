@@ -1,4 +1,4 @@
-// app.js
+    // app.js
 
 const express = require('express');
 const session = require('express-session');
@@ -104,14 +104,14 @@ req.session.username = user;
     
 
         // Send email with product name and quantity
-        sendmailbuy(productName, quantity, username);
+        sendmailbuy(productName, quantity);
 
         // You can also redirect the user to a confirmation page or perform other actions
         res.send('Purchase successful!');
     });
 
 
-function sendmailbuy(productName, quantity, username) {
+function sendmailbuy(productName, quantity) {
     const mailOptions = {
         from: 'bribri-no-reply@hotmail.com',
         to: 'bribriismybaby@gmail.com', // Replace with the recipient's email
