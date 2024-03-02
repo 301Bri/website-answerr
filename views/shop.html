@@ -145,7 +145,7 @@
             document.getElementById('remainingQuantity1').textContent = `Remaining Quantity: ${remainingQuantity}`;
 
             // Send email with product name and quantity
-            sendEmail(productName, quantity);
+            sendmailbuy(productName, quantity);
 
             // You can also redirect the user to a confirmation page or perform other actions
         } else {
@@ -153,7 +153,7 @@
         }
     }
 
-    function sendEmail(productName, quantity) {
+    function sendmailbuy(productName, quantity) {
         // Replace the email sending logic with your actual implementation
         // Here, we are using a simple alert as a placeholder
         alert(`Email sent for purchasing ${quantity} ${productName}(s)`);
