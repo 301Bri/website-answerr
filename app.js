@@ -130,7 +130,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 app.get('/pdf', (req, res) => {
-const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L03紙船印象 語文常識一(112f632264).pdf');
+const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L04小詩選(112f632268).pdf');
         res.download(file);
 });
 app.get('/math', (req, res) => {
