@@ -122,6 +122,7 @@ function loadUserCoins(username) {
 }
 // Function to save user coins to file
 function saveUserCoins(username, coins) {
+    req.session.username = username;
     const userData = { coins: coins };
     fs.writeFileSync(`users/${username}.json`, JSON.stringify(userData));
 }
