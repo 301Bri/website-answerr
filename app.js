@@ -160,6 +160,12 @@ app.get('/logout', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
+// Route to get user's coin balance
+app.get('/coins', requireLogin, (req, res) => {
+    const username = req.session.username;
+    const userCoins = loadUserCoins(username); // Assume this function retrieves the user's coin balance
+    res.json({ coins: userCoins });
+});
 app.get('/pdf', requireCoins(10), (req, res) => {
 const username = req.session.username;
     let userCoins = loadUserCoins(username);
