@@ -6,12 +6,15 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const fs = require('fs');
 const ejs = require('ejs'); 
 const nodemailer = require('nodemailer');
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
+
+
 
 
 
@@ -107,6 +110,34 @@ function sendEmail(to, subject, text) {
     });
 }
 
+//coin loader
+function loadUserCoins(username) {
+    try {
+        const userData = fs.readFileSync(`users/${username}.json`, 'utf8');
+        return JSON.parse(userData).coins || 0;
+    } catch (error) {
+        console.error('Error loading user coins:', error);
+        return 0;
+    }
+}
+// Function to save user coins to file
+function saveUserCoins(username, coins) {
+    const userData = { coins: coins };
+    fs.writeFileSync(`users/${username}.json`, JSON.stringify(userData));
+}
+
+// Middleware to check if user has enough coins
+function requireCoins(coinsRequired) {
+    return (req, res, next) => {
+        const userCoins = loadUserCoins(req.session.username);
+        if (userCoins >= coinsRequired) {
+            next();
+        } else {
+            res.status(403).send('Not enough coins to download.');
+        }
+    };
+}
+
 
 // Download route
 app.get('/download', requireLogin, (req, res) => {
@@ -129,12 +160,20 @@ app.get('/logout', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
-app.get('/pdf', (req, res) => {
-const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L04小詩選(112f632268).pdf');
+app.get('/pdf', requireCoins(10), (req, res) => {
+const username = req.session.username;
+    let userCoins = loadUserCoins(username);
+    userCoins -= 10;
+    saveUserCoins(username, userCoins);
+    const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L04小詩選(112f632268).pdf');
         res.download(file);
 });
 app.get('/math', (req, res) => {
-const file = path.join(__dirname, 'ans', 'Math_A_ans.pdf');
+const username = req.session.username;
+    let userCoins = loadUserCoins(username);
+    userCoins -= 10;
+    saveUserCoins(username, userCoins);
+    const file = path.join(__dirname, 'ans', 'Math_A_ans.pdf');
         res.download(file);
 });
 //shop route
