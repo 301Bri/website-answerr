@@ -65,13 +65,24 @@
 <body>
     <div class="container">
         <h1>HI idiot🖕</h1>
+        <p>Your current coin balance: <span id="coinBalance"></span></p>
         <p class="file-name">Download for Chinese</p>
         <a href="/pdf" class="download-link">Click me to Download</a>
         <p class="file-name">Download for Math Yellow Thinge</p>
         <a href="/math" class="download-link">Click me to Download</a>
         <p class="file-name">Shop</p>
+
         <a href="/shop" class="download-link">Go to Shop</a>
         <a href="/logout" class="logout-link">Logout</a>
     </div>
+            <script>
+            fetch('/coins')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('coinBalance').textContent = data.coins;
+            })
+            .catch(error => console.error('Error fetching coin balance:', error));
+
+        </script>
 </body>
 </html>
