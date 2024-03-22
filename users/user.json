@@ -1,6 +1,16 @@
 {
-  "user": {
-    "coins": 20
-  }
- 
+    "users": [
+        {
+            "username": "user",
+            "coins": 50
+        },
+        {
+            "username": "user2",
+            "coins": 100
+        },
+        {
+            "username": "user3",
+            "coins": 25
+        }
+    ]
 }
