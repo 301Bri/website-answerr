@@ -169,17 +169,12 @@ app.get('/coins', requireLogin, (req, res) => {
 });
 app.get('/pdf', requireCoins(10), (req, res) => {
 const username = req.session.username;
-    let userCoins = loadUserCoins(username);
-    userCoins -= 10;
-    saveUserCoins(username, userCoins);
+    
     const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L04小詩選(112f632268).pdf');
         res.download(file);
 });
 app.get('/math', (req, res) => {
-const username = req.session.username;
-    let userCoins = loadUserCoins(username);
-    userCoins -= 10;
-    saveUserCoins(username, userCoins);
+
     const file = path.join(__dirname, 'ans', 'Math_A_ans.pdf');
         res.download(file);
 });
