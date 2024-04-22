@@ -167,7 +167,7 @@ app.get('/coins', requireLogin, (req, res) => {
     const userCoins = loadUserCoins(username); // Assume this function retrieves the user's coin balance
     res.json({ coins: userCoins });
 });
-app.get('/pdf', requireCoins(10), (req, res) => {
+app.get('/pdf', (req, res) => {
 const username = req.session.username;
     
     const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L04小詩選(112f632268).pdf');
