@@ -170,7 +170,7 @@ app.get('/coins', requireLogin, (req, res) => {
 app.get('/pdf', (req, res) => {
 const username = req.session.username;
     
-    const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L06石虎是我們的龍貓 語文常識二(112f632276).pdf');
+    const file = path.join(__dirname, 'ans', '國文1下平時測驗卷教用-L07五柳先生傳(112f632280).pdf');
         res.download(file);
 });
 app.get('/math', (req, res) => {
